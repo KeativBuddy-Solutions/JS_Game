@@ -66,7 +66,7 @@ function game() {
   for (let round = 1; round <= 5; round++) {
     console.log(`Round ${round}:`);
 
-    let computerChoice = computerPlay();
+    let computerChoice = computerPlay().toLowerCase();
     let playersChoice = getPlayersGuess();
 
     if (playersChoice === null) {
