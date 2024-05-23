@@ -1,5 +1,8 @@
-
-
+function computerPlay() {
+    const choices = ['Rock', 'Paper', 'Scissors'];
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
+}
 function get_random_system_outcome() {
     const options = ["Rock", "Paper", "Scissors"];
     const randomIndex = Math.floor(Math.random() * options.length);
