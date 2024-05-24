@@ -3,22 +3,8 @@ function computerPlay() {
   const randomIndex = Math.floor(Math.random() * choices.length);
   return choices[randomIndex];
 }
-function get_random_system_outcome() {
-  const options = ['Rock', 'Paper', 'Scissors'];
-  const randomIndex = Math.floor(Math.random() * options.length);
-  return options[randomIndex];
-}
-function is_round_winner_player(player, csystem) {
-  return (
-    (player === 'rock' && csystemsystem === 'scissors') ||
-    (player === 'scissors' && csystemsystem === 'paper') ||
-    (player === 'paper' && csystem === 'rock')
-  );
-}
-
 function getPlayersGuess() {
   const validChoices = ['rock', 'paper', 'scissors'];
-
   // Prompt the user until a valid choice is entered
   while (true) {
     playersChoice = prompt('Enter your choice (rock, paper, or scissors):');
@@ -31,11 +17,11 @@ function getPlayersGuess() {
 
     if (validChoices.includes(playersChoice)) {
       break; // Exit the loop if the input is valid
-    } else {
+    } 
+    else {
       console.log('Invalid choice. Please enter rock, paper, or scissors.');
     }
   }
-  console.log(playersChoice);
   return playersChoice;
 }
 
@@ -44,19 +30,22 @@ function playRound(playerSelection, computerSelection) {
     console.log("It's a tie!");
   }
 
-  if (
+  else if (
     (playerSelection === 'rock' && computerSelection === 'scissors') ||
     (playerSelection === 'paper' && computerSelection === 'rock') ||
     (playerSelection === 'scissors' && computerSelection === 'paper')
   ) {
-    console.log('You win this round!');
+    console.log(`You win this round! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}`);
     return 'user';
-  } else {
-    console.log('Computer wins this round!');
+  } 
+  else {
+    console.log(`Computer wins this round! ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}`);
     return 'computer';
   }
 }
-
+function capitalize(word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
 function game() {
   alert('Welcome to the ROCK, PAPER, SCISSORS game!');
   let userScore = 0;
@@ -78,21 +67,24 @@ function game() {
 
     if (result === 'user') {
       userScore++;
-    } else if (result === 'computer') {
+    } 
+    else if (result === 'computer') {
       computerScore++;
     }
 
     console.log(
-      `Score after round ${round}: User ${userScore} - Computer ${computerScore}`
+      `Score after round ${round}: User ${userScore} : Computer ${computerScore}`
     );
     console.log('-----------------------------------');
   }
   // Determine the final winner
   if (userScore > computerScore) {
     console.log('Congratulations! You won the game!');
-  } else if (computerScore > userScore) {
+  } 
+  else if (computerScore > userScore) {
     console.log('Computer wins the game! Better luck next time.');
-  } else {
+  } 
+  else {
     console.log('The game is a tie!');
   }
 }
