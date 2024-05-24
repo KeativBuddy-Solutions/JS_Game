@@ -42,7 +42,6 @@ function getPlayersGuess() {
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     console.log("It's a tie!");
-    return 'tie';
   }
 
   if (
