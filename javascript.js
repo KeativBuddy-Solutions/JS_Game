@@ -5,20 +5,19 @@ function computerPlay() {
 }
 function getPlayersGuess() {
   const validChoices = ['rock', 'paper', 'scissors'];
-  // Prompt the user until a valid choice is entered
+
   while (true) {
     playersChoice = prompt('Enter your choice (rock, paper, or scissors):');
     if (playersChoice === null) {
       console.log('Game canceled by user.');
-      return null; // Indicate that the user canceled the game
+      return null;
     }
 
     playersChoice = playersChoice.toLowerCase();
 
     if (validChoices.includes(playersChoice)) {
-      break; // Exit the loop if the input is valid
-    } 
-    else {
+      break;
+    } else {
       console.log('Invalid choice. Please enter rock, paper, or scissors.');
     }
   }
@@ -28,18 +27,23 @@ function getPlayersGuess() {
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     console.log("It's a tie!");
-  }
-
-  else if (
+  } else if (
     (playerSelection === 'rock' && computerSelection === 'scissors') ||
     (playerSelection === 'paper' && computerSelection === 'rock') ||
     (playerSelection === 'scissors' && computerSelection === 'paper')
   ) {
-    console.log(`You win this round! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}`);
+    console.log(
+      `You win this round! ${capitalize(playerSelection)} beats ${capitalize(
+        computerSelection
+      )}`
+    );
     return 'user';
-  } 
-  else {
-    console.log(`Computer wins this round! ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}`);
+  } else {
+    console.log(
+      `Computer wins this round! ${capitalize(
+        computerSelection
+      )} beats ${capitalize(playerSelection)}`
+    );
     return 'computer';
   }
 }
@@ -47,9 +51,13 @@ function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 function game() {
-  alert('Welcome to the ROCK, PAPER, SCISSORS game!');
   let userScore = 0;
   let computerScore = 0;
+
+  alert(
+    'Please open your browser console to see the game output. You can do this by pressing F12. Once you have done this, click "OK" to start the game.'
+  );
+  console.log('Welcome to the ROCK, PAPER, SCISSORS game!');
 
   for (let round = 1; round <= 5; round++) {
     console.log(`Round ${round}:`);
@@ -67,8 +75,7 @@ function game() {
 
     if (result === 'user') {
       userScore++;
-    } 
-    else if (result === 'computer') {
+    } else if (result === 'computer') {
       computerScore++;
     }
 
@@ -77,14 +84,12 @@ function game() {
     );
     console.log('-----------------------------------');
   }
-  // Determine the final winner
+
   if (userScore > computerScore) {
     console.log('Congratulations! You won the game!');
-  } 
-  else if (computerScore > userScore) {
+  } else if (computerScore > userScore) {
     console.log('Computer wins the game! Better luck next time.');
-  } 
-  else {
+  } else {
     console.log('The game is a tie!');
   }
 }
