@@ -51,46 +51,53 @@ function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 function game() {
-  let userScore = 0;
-  let computerScore = 0;
+  let playAgain = true;
+  while(playAgain){
+    let userScore = 0;
+    let computerScore = 0;
 
-  alert(
-    'Please open your browser console to see the game output. You can do this by pressing F12. Once you have done this, click "OK" to start the game.'
+    alert(
+    `Welcome to the ROCK, PAPER, SCISSORS game!
+Please make sure your browser console is open to see the game output and interact with the game.`
   );
   console.log('Welcome to the ROCK, PAPER, SCISSORS game!');
 
-  for (let round = 1; round <= 5; round++) {
-    console.log(`Round ${round}:`);
+    for (let round = 1; round <= 5; round++) {
+      console.log(`Round ${round}:`);
 
-    let computerChoice = computerPlay().toLowerCase();
-    let playersChoice = getPlayersGuess();
+      let computerChoice = computerPlay().toLowerCase();
+      let playersChoice = getPlayersGuess();
 
-    if (playersChoice === null) {
-      return;
+      if (playersChoice === null) {
+        return;
+      }
+
+      console.log('Your choice:', playersChoice);
+      console.log("Computer's choice:", computerChoice);
+      const result = playRound(playersChoice, computerChoice);
+
+      if (result === 'user') {
+        userScore++;
+      } else if (result === 'computer') {
+        computerScore++;
+      }
+
+      console.log(
+        `Score after round ${round}: User ${userScore} : Computer ${computerScore}`
+      );
+      console.log('-----------------------------------');
     }
 
-    console.log('Your choice:', playersChoice);
-    console.log("Computer's choice:", computerChoice);
-    const result = playRound(playersChoice, computerChoice);
-
-    if (result === 'user') {
-      userScore++;
-    } else if (result === 'computer') {
-      computerScore++;
+    if (userScore > computerScore) {
+      console.log('Congratulations! You won the game!');
+    } else if (computerScore > userScore) {
+      console.log('Computer wins the game! Better luck next time.');
+    } else {
+      console.log('The game is a tie!');
     }
 
-    console.log(
-      `Score after round ${round}: User ${userScore} : Computer ${computerScore}`
-    );
-    console.log('-----------------------------------');
-  }
+    playAgain = confirm('Do you want to play again?');
 
-  if (userScore > computerScore) {
-    console.log('Congratulations! You won the game!');
-  } else if (computerScore > userScore) {
-    console.log('Computer wins the game! Better luck next time.');
-  } else {
-    console.log('The game is a tie!');
   }
 }
 game();
